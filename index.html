@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital HRM: Transforming the Future of Work</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --light-gray: #f3f4f6;
+            --gray: #9ca3af;
+            --accent: #8b5cf6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0d9488;
+        }
+        
+        .section {
+            margin: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -17px;
+        }
+        
+        .right::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion {
+            margin: 2rem 0;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-header {
+            background-color: white;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .accordion-header:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: white;
+        }
+        
+        .accordion-content.active {
+            padding: 1rem;
+            max-height: 1000px;
+        }
+        
+        .tab-container {
+            margin: 2rem 0;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            padding: 2rem 0;
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .case-study {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .company-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            margin: 2rem 0;
+        }
+        
+        .feature-list {
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            margin-right: 1rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .feature-content {
+            flex-grow: 1;
+        }
+        
+        .testimonial {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .cta {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+        
+        .infographic {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-options {
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-option {
+            display: block;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--light-gray);
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e5e7eb;
+        }
+        
+        .quiz-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .toc {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .toc-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .toc-list {
+            list-style: none;
+        }
+        
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-list a {
+            text-decoration: none;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .toc-list a:hover {
+            color: var(--primary);
+        }
+        
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .quote {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        .highlight-box {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Digital HRM Hub</div>
+        <h1>Digital HRM: Transforming the Future of Work</h1>
+        <p>Exploring how technology is revolutionizing human resource management in the digital era</p>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="brand">Digital HRM Hub</div>
+            <div class="nav-links">
+                <a href="#evolution">Evolution</a>
+                <a href="#pillars">Key Pillars</a>
+                <a href="#global">Global Examples</a>
+                <a href="#srilanka">Sri Lankan Context</a>
+                <a href="#functions">Core Functions</a>
+                <a href="#implementation">Implementation</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Welcome to the Digital HR Revolution</h1>
+            <p>In today's rapidly evolving business landscape, digital transformation has become essential for HR departments worldwide. This blog explores how technology, data analytics, and innovative approaches are reshaping human resource management to create more efficient, inclusive, and sustainable workplaces.</p>
+            <a href="#quiz" class="btn">Take the Digital HR Readiness Quiz</a>
+        </div>
+        
+        <div class="two-columns">
+            <div>
+                <section id="introduction" class="section">
+                    <h2 class="section-title">Introduction to Digital HRM</h2>
+                    <p>Digital Human Resource Management represents the integration of technology and data-driven approaches into traditional HR practices. It goes beyond simple automation to fundamentally transform how organizations manage their human capital.</p>
+                    
+                    <p>Today's HR professionals are leveraging digital tools to streamline processes, gain deeper insights into workforce trends, enhance employee experiences, and drive strategic decision-making. This digital revolution is transforming HR from an administrative function to a strategic business partner.</p>
+                    
+                    <div class="highlight-box">
+                        <h3>Key Benefits of Digital HRM:</h3>
+                        <ul>
+                            <li>Enhanced efficiency through automation of routine tasks</li>
+                            <li>Data-driven decision-making capabilities</li>
+                            <li>Improved employee experience and engagement</li>
+                            <li>Greater ability to attract and retain top talent</li>
+                            <li>Better alignment of HR strategies with business goals</li>
+                        </ul>
+                    </div>
+                    
+                    <p>As we navigate through this blog, we'll explore how organizations are implementing digital HR strategies, examine real-world success stories, and provide practical insights for HR professionals looking to lead digital transformation in their organizations.</p>
+                </section>
+                
+                <section id="evolution" class="section">
+                    <h2 class="section-title">Evolution of HRM to Digital HRM</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>1950s-1980s: Traditional HRM</h3>
+                                <p>Focus on personnel administration, manual record-keeping, and compliance with labor regulations. HR primarily served administrative functions with limited strategic input.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>1990s-2000s: Computerized HR Systems</h3>
+                                <p>Introduction of computer-based HR information systems. Organizations began digitizing employee records and automating basic administrative functions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>2000s-2010s: HRIS & Early Digital Integration</h3>
+                                <p>Rise of specialized HR software solutions, early cloud-based systems, and integrated HR management platforms. Strategic HR begins to emerge with better access to workforce data.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item right">
+                            <div class="timeline-content">
+                                <h3>2010s-Present: Modern Digital HRM</h3>
+                                <p>Adoption of AI, advanced analytics, mobile HR applications, and integrated HR ecosystems. HR emerges as a strategic partner with data-driven insights guiding business decisions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item left">
+                            <div class="timeline-content">
+                                <h3>Future: Intelligent HRM</h3>
+                                <p>Predictive and prescriptive analytics, AI-driven decision-making, blockchain for HR, immersive technologies, and completely personalized employee experiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quote">
+                        "The evolution of HR from a primarily administrative function to a strategic business partner has been accelerated by digital technologies, enabling HR professionals to add unprecedented value to their organizations." - Josh Bersin, Global Industry Analyst
+                    </div>
+                </section>
+            </div>
+            
+            <div>
+                <div class="toc">
+                    <h3 class="toc-title">Table of Contents</h3>
+                    <ul class="toc-list">
+                        <li><a href="#introduction">Introduction to Digital HRM</a></li>
+                        <li><a href="#evolution">Evolution of HRM to Digital HRM</a></li>
+                        <li><a href="#pillars">Core Pillars of Digital HRM</a></li>
+                        <li><a href="#global">Global Examples</a></li>
+                        <li><a href="#srilanka">Digital HRM in Sri Lanka</a></li>
+                        <li><a href="#functions">Core Functions & Objectives</a></li>
+                        <li><a href="#implementation">Implementation Guide</a></li>
+                        <li><a href="#challenges">Challenges & Solutions</a></li>
+                        <li><a href="#future">Future of Digital HRM</a></li>
+                    </ul>
+                </div>
+                
+                <div id="quiz" class="quiz-container">
+                    <h3>Digital HR Readiness Quiz</h3>
+                    <p>How prepared is your organization for Digital HRM? Answer these questions to find out!</p>
+                    
+                    <div class="quiz-question">
+                        <p><strong>1. What percentage of your HR processes are currently digitized?</strong></p>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q1" value="a"> Less than 25%</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="b"> 25-50%</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="c"> 51-75%</label>
+                            <label class="quiz-option"><input type="radio" name="q1" value="d"> More than 75%</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p><strong>2. Does your organization use analytics for HR decision-making?</strong></p>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q2" value="a"> Not at all</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="b"> For basic reporting only</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="c"> For some strategic decisions</label>
+                            <label class="quiz-option"><input type="radio" name="q2" value="d"> Extensively across all HR functions</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <p><strong>3. How would you rate your HR team's digital skills?</strong></p>
+                        <div class="quiz-options">
+                            <label class="quiz-option"><input type="radio" name="q3" value="a"> Basic - limited to email and spreadsheets</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="b"> Moderate - comfortable with HRIS and basic tools</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="c"> Advanced - proficient with multiple digital platforms</label>
+                            <label class="quiz-option"><input type="radio" name="q3" value="d"> Expert - including data analysis and technology integration</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="quiz-submit">Submit</button>
+                    
+                    <div class="quiz-result" id="quiz-result">
+                        <h3>Your Digital HR Readiness Score:</h3>
+                        <p id="quiz-score">You are in the early stages of Digital HR transformation. Focus on building foundational digital capabilities and gradually introducing technology into key HR processes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <section id="pillars" class="section">
+            <h2 class="section-title">Core Pillars of Digital HRM</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3 class="card-title">Technology Integration</h3>
+                    <p>Modern HR leverages various technologies to streamline processes, reduce manual work, and enhance efficiency. These include:</p>
+                    <ul>
+                        <li>Cloud-based HR management systems</li>
+                        <li>Mobile applications for employee self-service</li>
+                        <li>AI-powered tools for recruitment and onboarding</li>
+                        <li>Chatbots for employee inquiries and support</li>
+                        <li>Workflow automation tools</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="card-title">Data Analytics</h3>
+                    <p>Data-driven HR uses analytics to inform decisions and strategies:</p>
+                    <ul>
+                        <li>Workforce analytics for productivity insights</li>
+                        <li>Predictive analytics for talent management</li>
+                        <li>Real-time dashboards for HR metrics</li>
+                        <li>Performance data analysis</li>
+                        <li>Retention risk assessment models</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">😊</div>
+                    <h3 class="card-title">Employee Well-being & Experience</h3>
+                    <p>Digital tools focused on enhancing employee satisfaction:</p>
+                    <ul>
+                        <li>Digital wellness platforms and applications</li>
+                        <li>Employee engagement measurement tools</li>
+                        <li>Pulse survey systems</li>
+                        <li>Digital recognition and reward platforms</li>
+                        <li>Virtual community-building tools</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="card-title">Diversity, Inclusion & Sustainability</h3>
+                    <p>Technology supporting ethical and sustainable HR practices:</p>
+                    <ul>
+                        <li>Bias-free recruitment tools</li>
+                        <li>Diversity analytics and reporting</li>
+                        <li>Digital accessibility solutions</li>
+                        <li>Paperless HR processes for environmental impact</li>
+                        <li>Ethical AI guidelines in HR technology</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="stat-container">
+                <div class="stat-item">
+                    <div class="stat-number">68%</div>
+                    <p>of HR executives prioritize digital transformation</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">3X</div>
+                    <p>higher employee engagement with digital HR solutions</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">42%</div>
+                    <p>reduction in hiring time with AI recruitment tools</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">57%</div>
+                    <p>of HR processes can be automated or augmented with technology</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="global" class="section">
+            <h2 class="section-title">Global Examples of Digital HRM Success</h2>
+            
+            <div class="case-study">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB4PSI1MCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmaWxsPSIjNDI4NWY0Ij5Hb29nbGU8L3RleHQ+PC9zdmc+" alt="Google Logo" class="company-logo">
+                <h3>Google's People Analytics Approach</h3>
+                
+                <p>Google pioneered the use of people analytics with their "Project Oxygen" which analyzed manager effectiveness. Their data-driven approach to HR has influenced countless organizations worldwide.</p>
+                
+                <h4>Key Innovations:</h4>
+                <ul>
+                    <li><strong>Project Oxygen:</strong> Used data to identify behaviors of successful managers, revolutionizing leadership development</li>
+                    <li><strong>People Analytics Team:</strong> Dedicated team using statistical analysis and machine learning to improve people operations</li>
+                    <li><strong>Re:Work:</strong> Sharing research and best practices to help organizations use data to improve work life</li>
+                </ul>
+                
+                <div class="quote">
+                    "We take an analytical approach to people management. All people decisions at Google are based on data and analytics." - Laszlo Bock, Former SVP of People Operations at Google
+                </div>
+                
+                <p><strong>Results:</strong> 30% improvement in manager quality scores, higher retention rates, and increased employee satisfaction.</p>
+            </div>
+            
+            <div class="case-study">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB4PSI1MCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmaWxsPSIjMDA3OGQ0Ij5NaWNyb3NvZnQ8L3RleHQ+PC9zdmc+" alt="Microsoft Logo" class="company-logo">
+                <h3>Microsoft's Digital Transformation of HR</h3>
+                
+                <p>Microsoft has transformed its HR function through digital tools, AI integration, and a focus on employee experience in the digital workplace.</p>
+                
+                <h4>Key Innovations:</h4>
+                <ul>
+                    <li><strong>Viva Platform:</strong> An employee experience platform that integrates with Microsoft Teams</li>
+                    <li><strong>AI-Powered Insights:</strong> Using machine learning to derive actionable insights from employee data</li>
+                    <li><strong>Digital Learning Experience:</strong> Personalized learning recommendations based on skills gaps and career aspirations</li>
+                </ul>
+                
+                <p><strong>Results:</strong> Enhanced employee engagement, 15% improvement in productivity metrics, and better work-life balance for employees.</p>
+            </div>
+            
+            <div class="case-study">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB4PSI1MCIgeT0iNTAiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmaWxsPSIjMDUzODZCIj5VbmlsZXZlcjwvdGV4dD48L3N2Zz4=" alt="Unilever Logo" class="company-logo">
+                <h3>Unilever's Sustainable Digital HR Practices</h3>
+                
+                <p>Unilever has pioneered the integration of sustainability principles into its digital HR transformation.</p>
+                
+                <h4>Key Innovations:</h4>
+                <ul>
+                    <li><strong>AI Recruitment:</strong> Using AI-powered video interviews that saved 100,000 hours of interviewing time</li>
+                    <li><strong>Digital Learning:</strong> Platform offering over 10,000 digital courses aligned with sustainability goals</li>
+                    <li><strong>Wellbeing Analytics:</strong> Digital tools monitoring employee wellbeing to prevent burnout</li>
+                    <li><strong>Sustainable HR Metrics:</strong> Tracking environmental impact of HR operations</li>
+                </ul>
+                
+                <div class="quote">
+                    "Our digital HR transformation has been guided by our Sustainable Living Plan, ensuring that we leverage technology not just for efficiency but for positive social and environmental impact." - Leena Nair, Former CHRO, Unilever
+                </div>
+                
+                <p><strong>Results:</strong> 90% paperless HR operations, 50% reduction in recruitment costs, and improved sustainability metrics across HR functions.</p>
+            </div>
+        </section>
+        
+        <section id="srilanka" class="section">
+            <h2 class="section-title">Digital HRM in Sri Lankan Organizations</h2>
+            
+            <p>Sri Lankan organizations have been increasingly adopting digital HR practices, though the journey has varied across industries and organization sizes.</p>
+            
+            <div class="two-columns">
+                <div>
+                    <h3>Current Adoption Levels</h3>
+                    <p>According to recent surveys, approximately 45% of large enterprises in Sri Lanka have implemented some form of digital HR solutions, while the percentage drops to about 20% for small and medium enterprises. The banking, telecommunications, and IT sectors lead in digital HR adoption.</p>
+                    
+                    <div class="chart-container">
+                        <svg width="100%" height="100%" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Chart title -->
+                            <text x="300" y="30" text-anchor="middle" font-size="18" font-weight="bold">Digital HR Adoption in Sri Lanka by Industry</text>
+                            
+                            <!-- X-axis -->
+                            <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"/>
+                            
+                            <!-- Y-axis -->
+                            <line x1="50" y1="50" x2="50" y2="350" stroke="black" stroke-width="2"/>
+                            
+                            <!-- X-axis labels -->
+                            <text x="100" y="370" text-anchor="middle">Banking</text>
+                            <text x="175" y="370" text-anchor="middle">IT</text>
+                            <text x="250" y="370" text-anchor="middle">Telecom</text>
+                            <text x="325" y="370" text-anchor="middle">Manufacturing</text>
+                            <text x="400" y="370" text-anchor="middle">Retail</text>
+                            <text x="475" y="370" text-anchor="middle">Healthcare</text>
+                            
+                            <!-- Y-axis labels -->
+                            <text x="40" y="350" text-anchor="end">0%</text>
+                            <text x="40" y="300" text-anchor="end">20%</text>
+                            <text x="40" y="250" text-anchor="end">40%</text>
+                            <text x="40" y="200" text-anchor="end">60%</text>
+                            <text x="40" y="150" text-anchor="end">80%</text>
+                            <text x="40" y="100" text-anchor="end">100%</text>
+                            
+                            <!-- Bars -->
+                            <rect x="75" y="150" width="50" height="200" fill="#2563eb" opacity="0.8"/>
+                            <rect x="150" y="130" width="50" height="220" fill="#2563eb" opacity="0.8"/>
+                            <rect x="225" y="170" width="50" height="180" fill="#2563eb" opacity="0.8"/>
+                            <rect x="300" y="220" width="50" height="130" fill="#2563eb" opacity="0.8"/>
+                            <rect x="375" y="250" width="50" height="100" fill="#2563eb" opacity="0.8"/>
+                            <rect x="450" y="270" width="50" height="80" fill="#2563eb" opacity="0.8"/>
+                            
+                            <!-- Percentages -->
+                            <text x="100" y="140" text-anchor="middle" font-size="12" fill="white">75%</text>
+                            <text x="175" y="120" text-anchor="middle" font-size="12" fill="white">80%</text>
+                            <text x="250" y="160" text-anchor="middle" font-size="12" fill="white">70%</text>
+                            <text x="325" y="210" text-anchor="middle" font-size="12" fill="white">50%</text>
+                            <text x="400" y="240" text-anchor="middle" font-size="12" fill="white">40%</text>
+                            <text x="475" y="260" text-anchor="middle" font-size="12" fill="white">30%</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Success Stories from Sri Lanka</h3>
+                    
+                    <div class="card">
+                        <h4>Dialog Axiata PLC</h4>
+                        <p>Dialog has implemented a comprehensive digital HR platform that handles everything from recruitment to retirement. Their mobile-first approach allows employees to access HR services anywhere, anytime.</p>
+                        <p><strong>Key achievements:</strong> 40% reduction in HR administrative tasks, 60% improvement in HR response times, and enhanced employee satisfaction.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Commercial Bank of Ceylon</h4>
+                        <p>Commercial Bank has transformed its HR function with a data-driven approach, implementing advanced analytics for talent management and succession planning.</p>
+                        <p><strong>Key achievements:</strong> Improved predictive capability for talent retention, reduced hiring costs by 35%, and enhanced leadership pipeline.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Virtusa Corporation</h4>
+                        <p>Virtusa has implemented AI-powered recruitment and learning solutions, creating a seamless digital employee experience.</p>
+                        <p><strong>Key achievements:</strong> 50% reduction in time-to-hire, personalized learning journeys for employees, and improved knowledge management.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Challenges Specific to Sri Lankan Context</h3>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Digital Literacy and Skills Gap</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Many organizations face challenges with varying levels of digital literacy among HR staff and employees. There's a significant need for upskilling HR professionals in data analytics, digital tools, and technology management.</p>
+                        <p><strong>Solution:</strong> Implementing structured digital skills training programs and partnering with educational institutions to bridge the skills gap.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Infrastructure Limitations</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Inconsistent internet connectivity and IT infrastructure, particularly in rural areas, can hamper digital HR implementation. Many organizations also struggle with the high initial cost of digital HR systems.</p>
+                        <p><strong>Solution:</strong> Phased implementation approaches, cloud-based solutions with offline capabilities, and exploring government incentives for digital transformation.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Cultural Adaptation</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Traditional workplace cultures can be resistant to digital transformation. There's often a preference for face-to-face interactions in Sri Lankan work culture that can conflict with digital HR approaches.</p>
+                        <p><strong>Solution:</strong> Cultural change management programs, leadership championing of digital initiatives, and blended approaches that combine digital efficiency with human touch where culturally important.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Opportunities for Growth</h3>
+            <p>Despite the challenges, Sri Lankan organizations have significant opportunities to leverage digital HR:</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Young, Tech-Savvy Workforce</h4>
+                    <p>Sri Lanka's young demographic is increasingly tech-savvy, creating natural adaptability to digital HR solutions among newer workforce entrants.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Growing IT Sector</h4>
+                    <p>The robust IT industry in Sri Lanka provides local expertise and solutions tailored to regional needs, reducing dependency on foreign HR tech.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Government Digital Initiatives</h4>
+                    <p>Government programs promoting digital transformation offer potential support and incentives for organizations implementing digital HR.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Remote Work Acceleration</h4>
+                    <p>The global shift toward remote work has accelerated digital HR adoption out of necessity, creating momentum for continued transformation.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="functions" class="section">
+            <h2 class="section-title">Core Functions and Objectives of Digital HRM</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="planning">HR Planning</div>
+                    <div class="tab" data-tab="recruitment">Recruitment</div>
+                    <div class="tab" data-tab="development">Learning & Development</div>
+                    <div class="tab" data-tab="performance">Performance Management</div>
+                    <div class="tab" data-tab="culture">Digital Culture</div>
+                </div>
+                
+                <div class="tab-content active" id="planning">
+                    <h3>Human Resource Planning in the Digital Era</h3>
+                    
+                    <p>Digital HR has revolutionized workforce planning through predictive analytics and data-driven approaches. Modern HR planning uses technology to anticipate future talent needs, identify skills gaps, and develop strategic staffing models.</p>
+                    
+                    <div class="two-columns">
+                        <div>
+                            <h4>Key Digital HR Planning Tools:</h4>
+                            <ul>
+                                <li><strong>Workforce Analytics Platforms:</strong> Tools that analyze historical workforce data to predict future trends</li>
+                                <li><strong>Skills Mapping Software:</strong> Digital solutions that identify and track organizational skills inventories</li>
+                                <li><strong>Scenario Planning Tools:</strong> Software that models different business scenarios and their HR implications</li>
+                                <li><strong>Succession Planning Systems:</strong> Digital platforms that identify and track high-potential employees</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="highlight-box">
+                                <h4>Example: Strategic Workforce Planning at Shell</h4>
+                                <p>Shell implemented an advanced workforce analytics platform that combines internal HR data with external market data to create accurate workforce forecasts. The system uses AI to analyze:</p>
+                                <ul>
+                                    <li>Retirement patterns and attrition trends</li>
+                                    <li>Changing skill requirements in the energy sector</li>
+                                    <li>Labor market availability for critical roles</li>
+                                    <li>Cost implications of different staffing strategies</li>
+                                </ul>
+                                <p><strong>Result:</strong> Shell reduced workforce planning cycle time by 66% and improved forecast accuracy by 35%, enabling more agile business responses to market changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital HR Planning Objectives:</h4>
+                    <ol>
+                        <li><strong>Proactive Talent Management:</strong> Shifting from reactive hiring to proactive talent pool development</li>
+                        <li><strong>Strategic Skills Development:</strong> Identifying future skill requirements before they become urgent business needs</li>
+                        <li><strong>Cost Optimization:</strong> Using data to optimize workforce costs without compromising capabilities</li>
+                        <li><strong>Organizational Agility:</strong> Creating flexible workforce models that can adapt to rapid market changes</li>
+                    </ol>
+                </div>
+                
+                <div class="tab-content" id="recruitment">
+                    <h3>Modern Recruitment and Selection</h3>
+                    
+                    <p>Digital technologies have transformed the recruitment landscape, making it faster, more efficient, and potentially more objective. AI-powered tools are reshaping how organizations attract, identify, and select talent.</p>
+                    
+                    <div class="two-columns">
+                        <div>
+                            <h4>Digital Recruitment Technologies:</h4>
+                            <ul>
+                                <li><strong>AI-Powered Applicant Screening:</strong> Algorithms that screen resumes and applications based on job requirements</li>
+                                <li><strong>Video Interviewing Platforms:</strong> Tools for conducting and analyzing remote interviews</li>
+                                <li><strong>Recruitment Marketing Automation:</strong> Systems that automate candidate outreach and engagement</li>
+                                <li><strong>Predictive Hiring Analytics:</strong> Tools that identify candidates most likely to succeed in specific roles</li>
+                                <li><strong>Candidate Relationship Management (CRM):</strong> Systems to maintain relationships with talent pools</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="highlight-box">
+                                <h4>Example: Unilever's Digital Recruitment Transformation</h4>
+                                <p>Unilever revolutionized its graduate recruitment process with a digital-first approach:</p>
+                                <ol>
+                                    <li>AI-screened applications against core competencies</li>
+                                    <li>Gamified assessments to evaluate candidates' skills</li>
+                                    <li>Video interviews analyzed by AI for keywords, facial expressions, and language patterns</li>
+                                    <li>Final in-person assessment for cultural fit</li>
+                                </ol>
+                                <p><strong>Results:</strong> 50% reduction in time-to-hire, 90% decrease in recruiter hours per hire, increased diversity in hiring, and higher candidate satisfaction scores.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital Recruitment Objectives:</h4>
+                    <ol>
+                        <li><strong>Efficiency Enhancement:</strong> Reducing time-to-hire and administrative burden</li>
+                        <li><strong>Candidate Experience Improvement:</strong> Creating seamless, engaging application processes</li>
+                        <li><strong>Bias Reduction:</strong> Using technology to minimize unconscious bias in selection</li>
+                        <li><strong>Data-Driven Selection:</strong> Making hiring decisions based on evidence rather than intuition</li>
+                        <li><strong>Strategic Talent Acquisition:</strong> Shifting from transactional recruiting to building talent pipelines</li>
+                    </ol>
+                </div>
+                
+                <div class="tab-content" id="development">
+                    <h3>Digital Learning and Development</h3>
+                    
+                    <p>Digital technologies have revolutionized how organizations deliver training and development, making learning more accessible, personalized, and measurable than ever before.</p>
+                    
+                    <div class="two-columns">
+                        <div>
+                            <h4>Digital L&D Technologies:</h4>
+                            <ul>
+                                <li><strong>Learning Management Systems (LMS):</strong> Platforms to deliver, track, and manage learning content</li>
+                                <li><strong>Microlearning Platforms:</strong> Tools delivering bite-sized, focused learning content</li>
+                                <li><strong>Virtual Reality Training:</strong> Immersive learning experiences for complex skills</li>
+                                <li><strong>AI-Powered Learning Recommendations:</strong> Systems that suggest relevant learning based on roles and goals</li>
+                                <li><strong>Social Learning Platforms:</strong> Tools enabling peer-to-peer knowledge sharing</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="highlight-box">
+                                <h4>Example: IBM's Digital Learning Transformation</h4>
+                                <p>IBM transformed its learning approach with "Your Learning" - an AI-powered platform that:</p>
+                                <ul>
+                                    <li>Creates personalized learning recommendations based on career goals, skills gaps, and peer activities</li>
+                                    <li>Integrates internal and external learning resources into one platform</li>
+                                    <li>Uses Watson AI to understand learning preferences and optimize recommendations</li>
+                                    <li>Enables social learning through user ratings, recommendations, and content creation</li>
+                                </ul>
+                                <p><strong>Results:</strong> 300% increase in learning activity, 88% of employees actively using the platform monthly, and significantly reduced skills gaps in critical areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital L&D Objectives:</h4>
+                    <ol>
+                        <li><strong>Continuous Skills Development:</strong> Enabling ongoing learning rather than point-in-time training</li>
+                        <li><strong>Personalized Learning Journeys:</strong> Tailoring development to individual needs and career paths</li>
+                        <li><strong>Learning Effectiveness Measurement:</strong> Using data to evaluate and improve learning impact</li>
+                        <li><strong>Knowledge Democratization:</strong> Making expertise accessible across organizational boundaries</li>
+                        <li><strong>Adaptive Workforce Development:</strong> Rapidly reskilling employees as business needs evolve</li>
+                    </ol>
+                </div>
+                
+                <div class="tab-content" id="performance">
+                    <h3>Performance Management Transformation</h3>
+                    
+                    <p>Digital technologies have enabled a shift from annual performance reviews to continuous performance management, allowing for real-time feedback, data-driven evaluations, and more transparent goal management.</p>
+                    
+                    <div class="two-columns">
+                        <div>
+                            <h4>Digital Performance Management Tools:</h4>
+                            <ul>
+                                <li><strong>Continuous Feedback Platforms:</strong> Tools enabling ongoing feedback between managers and employees</li>
+                                <li><strong>OKR (Objectives and Key Results) Software:</strong> Systems for setting, tracking, and aligning goals</li>
+                                <li><strong>Performance Analytics Dashboards:</strong> Visual displays of performance metrics and trends</li>
+                                <li><strong>360-Degree Feedback Tools:</strong> Digital platforms collecting multi-source feedback</li>
+                                <li><strong>Recognition and Reward Platforms:</strong> Systems for acknowledging and incentivizing performance</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="highlight-box">
+                                <h4>Example: Deloitte's Performance Management Revolution</h4>
+                                <p>Deloitte replaced traditional performance reviews with a digital-first approach that:</p>
+                                <ul>
+                                    <li>Shifted from annual reviews to weekly check-ins facilitated by a mobile app</li>
+                                    <li>Implemented a simple, forward-looking question set focused on future performance improvement</li>
+                                    <li>Used data analytics to identify performance patterns and trends</li>
+                                    <li>Created transparency through shared dashboards visible to employees and managers</li>
+                                </ul>
+                                <p><strong>Results:</strong> 75% reduction in manager time spent on performance management, increased employee satisfaction with the process, and improved performance outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital Performance Management Objectives:</h4>
+                    <ol>
+                        <li><strong>Continuous Improvement:</strong> Creating regular feedback loops rather than point-in-time evaluations</li>
+                        <li><strong>Transparent Goal Alignment:</strong> Ensuring individual objectives support organizational priorities</li>
+                        <li><strong>Data-Driven Evaluation:</strong> Using objective metrics to supplement subjective assessments</li>
+                        <li><strong>Real-Time Course Correction:</strong> Identifying and addressing performance issues promptly</li>
+                        <li><strong>Motivation Enhancement:</strong> Increasing engagement through recognition and meaningful feedback</li>
+                    </ol>
+                </div>
+                
+                <div class="tab-content" id="culture">
+                    <h3>Creating a Digital-First Culture</h3>
+                    
+                    <p>Digital HRM plays a crucial role in shaping organizational culture, fostering innovation, collaboration, and agility through technology-enabled approaches.</p>
+                    
+                    <div class="two-columns">
+                        <div>
+                            <h4>Digital Culture Building Tools:</h4>
+                            <ul>
+                                <li><strong>Digital Collaboration Platforms:</strong> Tools like Microsoft Teams, Slack, or Workplace by Facebook</li>
+                                <li><strong>Employee Engagement Apps:</strong> Mobile applications for measuring and improving engagement</li>
+                                <li><strong>Digital Recognition Programs:</strong> Platforms allowing peer-to-peer and manager recognition</li>
+                                <li><strong>Enterprise Social Networks:</strong> Internal social media for knowledge sharing and community building</li>
+                                <li><strong>Culture Analytics:</strong> Tools measuring cultural indicators through digital interactions</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="highlight-box">
+                                <h4>Example: Microsoft's Culture Transformation</h4>
+                                <p>Microsoft used its own digital tools to transform its culture under CEO Satya Nadella:</p>
+                                <ul>
+                                    <li>Implemented Microsoft Teams as the central hub for all collaboration</li>
+                                    <li>Created digital "Communities of Practice" across organizational boundaries</li>
+                                    <li>Used Viva Insights to analyze collaboration patterns and encourage work-life balance</li>
+                                    <li>Implemented digital "hackathons" to foster innovation across the organization</li>
+                                </ul>
+                                <p><strong>Results:</strong> Transformed from a siloed, competitive culture to a collaborative, growth-oriented one, contributing to Microsoft's remarkable business resurgence.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Digital Culture Objectives:</h4>
+                    <ol>
+                        <li><strong>Collaboration Enhancement:</strong> Breaking down silos through digital connection</li>
+                        <li><strong>Innovation Acceleration:</strong> Using technology to capture and develop ideas</li>
+                        <li><strong>Agility Improvement:</strong> Creating more responsive and adaptive ways of working</li>
+                        <li><strong>Inclusion Promotion:</strong> Using digital tools to give voice to all employees</li>
+                        <li><strong>Knowledge Democratization:</strong> Making information accessible across hierarchical boundaries</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        
+        <section id="implementation" class="section">
+            <h2 class="section-title">Implementation Guide for Digital HRM</h2>
+            
+            <p>Successfully implementing Digital HRM requires a strategic approach that balances technology adoption with organizational change management.</p>
+            
+            <div class="two-columns">
+                <div>
+                    <h3>Assessment of Digital Readiness</h3>
+                    <p>Before implementing Digital HRM solutions, organizations should assess their current state across several dimensions:</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-content">
+                                <h4>Technology Infrastructure</h4>
+                                <p>Evaluate existing HR systems, integration capabilities, data quality, and technical support resources.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">👥</div>
+                            <div class="feature-content">
+                                <h4>HR Team Capabilities</h4>
+                                <p>Assess digital literacy, data analysis skills, change management experience, and technology comfort level within the HR team.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">🏢</div>
+                            <div class="feature-content">
+                                <h4>Organizational Culture</h4>
+                                <p>Evaluate openness to change, innovation appetite, leadership support, and employee technology adoption patterns.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">📋</div>
+                            <div class="feature-content">
+                                <h4>Process Maturity</h4>
+                                <p>Analyze current HR processes for standardization, documentation, efficiency, and suitability for digitization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Step-by-Step Implementation Roadmap</h3>
+                    
+                    <div class="card">
+                        <h4>Phase 1: Strategy & Planning (2-3 months)</h4>
+                        <ul>
+                            <li>Define digital HR vision and objectives</li>
+                            <li>Secure executive sponsorship</li>
+                            <li>Establish governance structure</li>
+                            <li>Define success metrics</li>
+                            <li>Conduct stakeholder analysis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Phase 2: Solution Selection (3-4 months)</h4>
+                        <ul>
+                            <li>Document requirements</li>
+                            <li>Research available solutions</li>
+                            <li>Conduct vendor evaluations</li>
+                            <li>Perform cost-benefit analysis</li>
+                            <li>Select and procure solutions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Phase 3: Implementation (6-12 months)</h4>
+                        <ul>
+                            <li>Configure and customize solutions</li>
+                            <li>Integrate with existing systems</li>
+                            <li>Migrate historical data</li>
+                            <li>Test all functionality</li>
+                            <li>Train HR team and end users</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Phase 4: Adoption & Optimization (Ongoing)</h4>
+                        <ul>
+                            <li>Monitor adoption metrics</li>
+                            <li>Gather user feedback</li>
+                            <li>Implement continuous improvements</li>
+                            <li>Expand functionality</li>
+                            <li>Stay current with technology updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Change Management Strategies</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Leadership Alignment</h4>
+                    <p>Secure visible executive sponsorship and ensure leaders model digital adoption behaviors. Create a Digital HR steering committee with cross-functional representation.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Communication Plan</h4>
+                    <p>Develop clear messaging about the "why" behind digital transformation. Use multiple channels to reach different employee groups and maintain regular updates on progress.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Digital Champions Network</h4>
+                    <p>Identify and empower early adopters across departments to serve as digital ambassadors. Provide them with additional training and recognition for supporting colleagues.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Training & Support</h4>
+                    <p>Offer multimodal learning options (videos, workshops, documentation). Create a dedicated support channel for digital HR questions and establish a knowledge base.</p>
+                </div>
+            </div>
+            
+            <h3>ROI Measurement for Digital HR Initiatives</h3>
+            
+            <p>Measuring return on investment is crucial for demonstrating the value of Digital HRM and securing continued support for initiatives. Consider these measurement approaches:</p>
+            
+            <div class="two-columns">
+                <div>
+                    <h4>Quantitative Metrics:</h4>
+                    <ul>
+                        <li><strong>Time Savings:</strong> Reduction in hours spent on administrative tasks</li>
+                        <li><strong>Cost Reduction:</strong> Decreased recruitment, training, or turnover expenses</li>
+                        <li><strong>Process Efficiency:</strong> Shorter cycle times for HR processes</li>
+                        <li><strong>Error Reduction:</strong> Fewer mistakes in HR transactions and data</li>
+                        <li><strong>Productivity Gains:</strong> Increased output per HR team member</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Qualitative Metrics:</h4>
+                    <ul>
+                        <li><strong>Employee Experience:</strong> Satisfaction with HR services and tools</li>
+                        <li><strong>Manager Satisfaction:</strong> Feedback on HR support and tools</li>
+                        <li><strong>Data Quality:</strong> Improvement in HR data accuracy and completeness</li>
+                        <li><strong>Strategic Contribution:</strong> HR team's increased focus on value-added activities</li>
+                        <li><strong>Organizational Agility:</strong> Ability to respond quickly to changing needs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote">
+                "The most successful Digital HR transformations aren't those with the most advanced technology, but those with the most effective change management and clear alignment to business goals." - Josh Bersin, Global Industry Analyst
+            </div>
+        </section>
+        
+        <section id="challenges" class="section">
+            <h2 class="section-title">Challenges and Solutions in Digital HRM</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Data Privacy and Security Concerns</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Challenge:</h4>
+                        <p>Digital HR systems collect and store sensitive employee data, creating privacy and security risks. Organizations must navigate complex data protection regulations like GDPR while ensuring data is accessible for analytics.</p>
+                        
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li><strong>Privacy by Design:</strong> Building privacy controls into HR systems from the ground up</li>
+                            <li><strong>Data Governance Framework:</strong> Establishing clear policies for data collection, storage, access, and deletion</li>
+                            <li><strong>Regular Security Audits:</strong> Conducting penetration testing and security reviews of HR systems</li>
+                            <li><strong>Data Anonymization:</strong> Using techniques to remove personally identifiable information for analytics</li>
+                            <li><strong>Employee Transparency:</strong> Clearly communicating to employees what data is collected and how it's used</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h4>Case Example: Workday's Approach</h4>
+                            <p>Workday implemented a comprehensive data security and privacy framework for their HR cloud platform that includes:</p>
+                            <ul>
+                                <li>Role-based access controls with granular permissions</li>
+                                <li>End-to-end encryption for all data</li>
+                                <li>Regular third-party security audits</li>
+                                <li>Privacy impact assessments for new features</li>
+                                <li>Country-specific data residency options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Digital Skills Gap in HR Teams</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Challenge:</h4>
+                        <p>Many HR professionals lack the technical skills needed to fully leverage digital HR systems, particularly in data analytics, digital tool configuration, and technology integration.</p>
+                        
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li><strong>HR Digital Upskilling:</strong> Dedicated training programs for HR teams on digital tools and data literacy</li>
+                            <li><strong>People Analytics Capability Building:</strong> Focused development of analytical skills within HR</li>
+                            <li><strong>HR-IT Partnership Models:</strong> Creating collaborative structures between HR and IT departments</li>
+                            <li><strong>HR Technology Specialists:</strong> Hiring or developing dedicated HR technology experts</li>
+                            <li><strong>Vendor Training Programs:</strong> Leveraging provider resources for skill development</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h4>Case Example: PwC's Digital HR Academy</h4>
+                            <p>PwC created a comprehensive digital upskilling program for their HR function that includes:</p>
+                            <ul>
+                                <li>Digital HR certification path with multiple proficiency levels</li>
+                                <li>Hands-on data visualization and analytics workshops</li>
+                                <li>Digital HR innovation labs for practical application</li>
+                                <li>Mentoring program pairing HR professionals with technology experts</li>
+                                <li>Rotating assignments between HR and digital teams</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Employee Adaptation to Digital Tools</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Challenge:</h4>
+                        <p>Many employees resist adopting new digital HR tools due to technology discomfort, concerns about automation replacing human interaction, or poor user experience design.</p>
+                        
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li><strong>User-Centered Design:</strong> Involving employees in the design and testing of digital HR tools</li>
+                            <li><strong>Multi-Channel Support:</strong> Providing various help options (chatbots, help desks, peer support)</li>
+                            <li><strong>Phased Implementation:</strong> Introducing digital tools gradually to avoid overwhelming users</li>
+                            <li><strong>Benefits Storytelling:</strong> Clearly communicating the "what's in it for me" for employees</li>
+                            <li><strong>Success Celebration:</strong> Recognizing and rewarding early adopters and digital champions</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h4>Case Example: Airbnb's Host Community Platform</h4>
+                            <p>While not strictly HR, Airbnb's approach to digital tool adoption offers valuable lessons:</p>
+                            <ul>
+                                <li>User testing with diverse host groups before full rollout</li>
+                                <li>Creating simple, intuitive interfaces with progressive disclosure of advanced features</li>
+                                <li>Developing localized onboarding journeys tailored to different user segments</li>
+                                <li>Establishing peer mentoring networks where experienced users help newcomers</li>
+                                <li>Regular feedback loops resulting in continuous platform improvements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Integration with Legacy Systems</span>
+                        <span>+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Challenge:</h4>
+                        <p>Many organizations struggle to integrate modern digital HR tools with existing legacy systems, creating data silos, duplicative processes, and inconsistent experiences.</p>
+                        
+                        <h4>Solutions:</h4>
+                        <ul>
+                            <li><strong>API-First Architecture:</strong> Prioritizing systems with robust integration capabilities</li>
+                            <li><strong>Middleware Solutions:</strong> Using integration platforms to connect disparate systems</li>
+                            <li><strong>Data Warehousing:</strong> Creating central repositories that pull from multiple systems</li>
+                            <li><strong>Phased Replacement Strategy:</strong> Gradually replacing legacy systems in a planned sequence</li>
+                            <li><strong>Comprehensive Data Strategy:</strong> Establishing data standards and governance across systems</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <h4>Case Example: Siemens' HR Integration Approach</h4>
+                            <p>Siemens faced the challenge of integrating numerous legacy HR systems across its global operations:</p>
+                            <ul>
+                                <li>Implemented an integration layer using MuleSoft to connect legacy systems with new cloud platforms</li>
+                                <li>Created a global data model with local variations where required by regulation</li>
+                                <li>Established a "single source of truth" for core employee data</li>
+                                <li>Developed a 5-year legacy system retirement roadmap</li>
+                                <li>Maintained dual systems during transition periods with automated data synchronization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="future" class="section">
+            <h2 class="section-title">Future of Digital HRM</h2>
+            
+            <p>The digital HR landscape continues to evolve rapidly, with emerging technologies promising to further transform how organizations manage their human capital. Here are key trends shaping the future of Digital HRM:</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>AI and Machine Learning Advancements</h3>
+                    <p>Artificial intelligence will move beyond basic automation to provide intelligent decision support for HR professionals:</p>
+                    <ul>
+                        <li><strong>Hyper-Personalization:</strong> AI creating individualized employee experiences at scale</li>
+                        <li><strong>Augmented HR Decision-Making:</strong> AI assistants that provide recommendations to HR professionals</li>
+                        <li><strong>Natural Language Processing:</strong> Advanced chatbots and voice assistants for HR services</li>
+                        <li><strong>Emotion AI:</strong> Tools analyzing sentiment and engagement through various digital signals</li>
+                        <li><strong>Ethical AI Frameworks:</strong> Governance ensuring responsible AI use in HR applications</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Blockchain for HR Processes</h3>
+                    <p>Blockchain technology will bring new levels of security, verification, and efficiency to HR:</p>
+                    <ul>
+                        <li><strong>Credential Verification:</strong> Secure, tamper-proof academic and professional credentials</li>
+                        <li><strong>Smart Contracts:</strong> Self-executing employment contracts and agreements</li>
+                        <li><strong>Payroll Revolution:</strong> Real-time payment systems and cross-border transactions</li>
+                        <li><strong>Secure Data Sharing:</strong> Employee-controlled sharing of personal information</li>
+                        <li><strong>Transparent Reward Systems:</strong> Auditable performance and compensation records</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Metaverse Applications in Workplace</h3>
+                    <p>Virtual and augmented reality technologies will create new dimensions for work and HR:</p>
+                    <ul>
+                        <li><strong>Immersive Onboarding:</strong> Virtual reality experiences for new employee orientation</li>
+                        <li><strong>Virtual Workspaces:</strong> Persistent digital environments for distributed teams</li>
+                        <li><strong>Scenario-Based Training:</strong> Realistic simulations for complex skill development</li>
+                        <li><strong>Virtual Career Fairs:</strong> Immersive recruitment events transcending physical limitations</li>
+                        <li><strong>Digital Twins:</strong> Virtual replicas of physical workplaces for planning and optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Predictive and Prescriptive Analytics Evolution</h3>
+                    <p>HR analytics will move from descriptive to increasingly sophisticated predictive and prescriptive capabilities:</p>
+                    <ul>
+                        <li><strong>Talent Risk Prediction:</strong> Advanced models identifying flight risks with actionable retention strategies</li>
+                        <li><strong>Workforce Scenario Planning:</strong> Sophisticated simulations of different staffing approaches</li>
+                        <li><strong>Optimization Algorithms:</strong> Tools suggesting optimal team compositions for specific projects</li>
+                        <li><strong>Causation Analysis:</strong> Moving beyond correlation to understand true drivers of workforce outcomes</li>
+                        <li><strong>Real-Time Organizational Network Analysis:</strong> Dynamic mapping of collaboration patterns and information flows</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="quote">
+                "The future of HR isn't about technology replacing human expertise, but about technology enhancing human capabilities to create more meaningful work experiences and business outcomes." - Diane Gherson, Former CHRO, IBM
+            </div>
+        </section>
+    </div>
+    
+    <div class="testimonial">
+        <div class="testimonial-container">
+            <h2>What HR Leaders Are Saying</h2>
+            <p class="testimonial-text">"Digital transformation has completely revolutionized how we approach HR at Dialog Axiata. What used to take days now happens in minutes, and the insights we're gaining from people analytics are driving better business decisions across the organization."</p>
+            <p class="testimonial-author">- Sandra De Zoysa, Group Chief Customer Officer, Dialog Axiata PLC</p>
+        </div>
+    </div>
+    
+    <div class="cta">
+        <div class="cta-container">
+            <h2>Start Your Digital HR Journey Today</h2>
+            <p>Transform your HR function with digital tools and strategies that enhance efficiency, improve employee experience, and drive business success.</p>
+            <a href="#quiz" class="btn btn-secondary">Take the Digital HR Readiness Quiz</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Digital HRM Hub</h3>
+                <p>Your resource for the latest insights, strategies, and best practices in Digital Human Resource Management.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">F</a>
+                    <a href="#" class="social-icon">T</a>
+                    <a href="#" class="social-icon">L</a>
+                    <a href="#" class="social-icon">I</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#evolution">Evolution of HRM</a></li>
+                    <li><a href="#pillars">Key Pillars</a></li>
+                    <li><a href="#global">Global Examples</a></li>
+                    <li><a href="#srilanka">Sri Lankan Context</a></li>
+                    <li><a href="#functions">Core Functions</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Digital HR Toolkit</a></li>
+                    <li><a href="#">Implementation Guide</a></li>
+                    <li><a href="#">HR Tech Evaluation Template</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:info@digitalhrmblog.com">info@digitalhrmblog.com</a></li>
+                    <li><a href="tel:+94112345678">+94 11 234 5678</a></li>
+                    <li><a href="#">Contact Form</a></li>
+                    <li><a href="#">Subscribe to Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Digital HRM Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+                
+                const icon = header.querySelector('span:last-child');
+                icon.textContent = content.classList.contains('active') ? '-' : '+';
+                
+                // Close other accordion items
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    if (item !== content && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.querySelector('span:last-child').textContent = '+';
+                    }
+                });
+            });
+        });
+        
+        // Tabs functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Quiz functionality
+        document.getElementById('quiz-submit').addEventListener('click', () => {
+            const resultDiv = document.getElementById('quiz-result');
+            const scoreText = document.getElementById('quiz-score');
+            
+            // Simple logic to show the result (in a real implementation, this would calculate a score)
+            resultDiv.style.display = 'block';
+            
+            // Scroll to the result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
