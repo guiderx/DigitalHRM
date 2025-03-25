@@ -54,7 +54,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 1rem;
         }
@@ -395,6 +395,7 @@
             margin-bottom: 2rem;
         }
         
+        
         footer {
             background-color: var(--dark);
             color: white;
@@ -561,6 +562,10 @@
             margin: 2rem 0;
             font-style: italic;
         }
+        ul {
+            padding-left: 20px; /* Adjust left padding */
+            list-style-position: inside; /* Ensures bullets align with text */
+        }
         
         .highlight-box {
             background-color: rgba(37, 99, 235, 0.1);
@@ -643,14 +648,12 @@
 </head>
 <body>
     <header>
-        <div class="logo">Digital HRM Hub</div>
         <h1>Digital HRM: Transforming the Future of Work</h1>
         <p>Exploring how technology is revolutionizing human resource management in the digital era</p>
     </header>
     
     <nav>
         <div class="nav-container">
-            <div class="brand">Digital HRM Hub</div>
             <div class="nav-links">
                 <a href="#evolution">Evolution</a>
                 <a href="#pillars">Key Pillars</a>
@@ -1450,6 +1453,7 @@
                         <p>Digital HR systems collect and store sensitive employee data, creating privacy and security risks. Organizations must navigate complex data protection regulations like GDPR while ensuring data is accessible for analytics.</p>
                         
                         <h4>Solutions:</h4>
+                        
                         <ul>
                             <li><strong>Privacy by Design:</strong> Building privacy controls into HR systems from the ground up</li>
                             <li><strong>Data Governance Framework:</strong> Establishing clear policies for data collection, storage, access, and deletion</li>
@@ -1646,6 +1650,23 @@
             <a href="#quiz" class="btn btn-secondary">Take the Digital HR Readiness Quiz</a>
         </div>
     </div>
+    <div id="disqus_thread">dsdqwe</div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = "https://guiderx.github.io/DigitalHRM/";  // Use your actual page URL
+            this.page.identifier = "/DigitalHRM/"; // Unique identifier for the page
+        };
+    
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://digitalhrm.disqus.com/embed.js';  // Replace 'dsa-7' with your Disqus shortname
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     
     <footer>
         <div class="footer-container">
@@ -1762,5 +1783,6 @@
             });
         });
     </script>
+    
 </body>
 </html>
